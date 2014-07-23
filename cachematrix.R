@@ -1,15 +1,35 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
+## the "makeCacheMatrix" function should accept a square matrix and cahce it as a global variable.
 
 makeCacheMatrix <- function(x = matrix()) {
+        m <- NULL
+        set <- function(y) {
+                 x <<- y
+                 m <<- NULL
+                                                   
+                }
+        get <- function(x) x
+        setmatrix <- function(x = matrix()) m <<- setmatrix
+        getmatrix <- function() m
+                                           
+        list( set = set,  get = get, getmatrix = getmatrix,setmatrix  = setmatrix)
 
 }
 
 
-## Write a short comment describing this function
+## The "cacheSolve" function will take the matrix stored as a variable from the previous function and will
+## find the inverse of the matrix using the "solve" function. 
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        
+        data <- x$get
+        if(!is.null(m)) {
+                message("getting cached data")
+                return(m)
+        }
+        m <- solve(data, ...)
+        x$setmatrix(m)
+        m
 }
